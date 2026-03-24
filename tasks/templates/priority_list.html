@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Priorities</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark px-4">
+    <a class="navbar-brand" href="/">Hangarin</a>
+    <div>
+        <a href="/tasks/" class="btn btn-outline-light me-2">Tasks</a>
+        <a href="/categories/" class="btn btn-outline-light me-2">Categories</a>
+        <a href="/priorities/" class="btn btn-outline-light">Priorities</a>
+    </div>
+</nav>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>Priorities</h2>
+        <a href="/priorities/add/" class="btn btn-primary">+ Add Priority</a>
+    </div>
+    <table class="table table-bordered mt-3">
+        <thead class="table-dark">
+            <tr><th>Name</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+            {% for priority in priorities %}
+            <tr>
+                <td>{{ priority.name }}</td>
+                <td>
+                    <a href="/priorities/edit/{{ priority.pk }}/" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="/priorities/delete/{{ priority.pk }}/" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="2">No priorities yet.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
